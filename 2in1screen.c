@@ -87,7 +87,7 @@ int main(int argc, char const *argv[]) {
   }
   pclose(pf);
 
-  bdopen("in_accel_scale", 0);
+  bdopen("scale", 0);
   double scale = atof(content);
 
   FILE *dev_accel_y = bdopen("in_accel_y_raw", 1);
