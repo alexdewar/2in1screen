@@ -6,15 +6,15 @@
 #include <unistd.h>
 
 #define DATA_SIZE 256
-#define N_STATE 2
+#define N_STATE 4
 char basedir[DATA_SIZE];
 char *basedir_end = NULL;
 char content[DATA_SIZE];
 char command[DATA_SIZE * 4];
 
-char *ROT[] = {"normal", "inverted", "left", "right"};
+char *ROT[] = {"normal", "inverted", "right", "left"};
 char *COOR[] = {"1 0 0 0 1 0 0 0 1", "-1 0 1 0 -1 1 0 0 1",
-                "0 -1 1 1 0 0 0 0 1", "0 1 0 -1 0 1 0 0 1"};
+                "0 1 0 -1 0 1 0 0 1", "0 -1 1 1 0 0 0 0 1"};
 // char *TOUCH[] = {"enable",                 "disable", "disable", "disable"};
 
 double accel_y = 0.0,
@@ -65,7 +65,7 @@ void rotate_screen() {
   system(command);
   sprintf(command,
           "xinput set-prop \"%s\" \"Coordinate Transformation Matrix\" %s",
-          "Wacom HID 4846 Finger", COOR[current_state]);
+          "Elan Touchscreen", COOR[current_state]);
   system(command);
 }
 
